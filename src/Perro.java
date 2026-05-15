@@ -48,7 +48,14 @@ public class Perro {
         this.ojoDerecho = ojoDerecho;
     }
 
-
+    @Override
+    public String toString() {
+        return
+                "Nombre:'" + Nombre + '\n' +
+                "Raza:'" + raza + '\n' +
+                "Edad=" + edad +
+                '\n';
+    }
 
     public String getRaza() {
         return raza;

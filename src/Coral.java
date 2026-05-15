@@ -8,10 +8,5 @@ public class Coral {
         ListaPerros.add(perro);
     }
 
-    @Override
-    public String toString() {
-        return "Coral{" +
-                "ListaPerros=" + ListaPerros +
-                '}';
-    }
+
 }
