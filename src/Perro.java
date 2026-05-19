@@ -51,9 +51,9 @@ public class Perro {
     @Override
     public String toString() {
         return
-                "Nombre:'" + Nombre + '\n' +
-                "Raza:'" + raza + '\n' +
-                "Edad=" + edad +
+                "Nombre:" + Nombre + '\n' +
+                "Raza:" + raza + '\n' +
+                "Edad: " + edad +
                 '\n';
     }
 
