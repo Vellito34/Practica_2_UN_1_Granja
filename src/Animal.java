@@ -1,0 +1,58 @@
+public class Animal {
+    private String raza;
+    private int edad;
+    private Ojo ojoIzquierdo;
+    private Ojo ojoDerecho;
+    private Oreja orejaDerecha;
+    private Oreja orejaIzquierda;
+
+
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public Ojo getOjoIzquierdo() {
+        return ojoIzquierdo;
+    }
+
+    public void setOjoIzquierdo(Ojo ojoIzquierdo) {
+        this.ojoIzquierdo = ojoIzquierdo;
+    }
+
+    public Ojo getOjoDerecho() {
+        return ojoDerecho;
+    }
+
+    public void setOjoDerecho(Ojo ojoDerecho) {
+        this.ojoDerecho = ojoDerecho;
+    }
+
+    public Oreja getOrejaDerecha() {
+        return orejaDerecha;
+    }
+
+    public void setOrejaDerecha(Oreja orejaDerecha) {
+        this.orejaDerecha = orejaDerecha;
+    }
+
+    public Oreja getOrejaIzquierda() {
+        return orejaIzquierda;
+    }
+
+    public void setOrejaIzquierda(Oreja orejaIzquierda) {
+        this.orejaIzquierda = orejaIzquierda;
+    }
+}
