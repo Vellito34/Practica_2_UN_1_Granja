@@ -33,12 +33,12 @@ public class Coral {
         return LPF;
     }
 
-    public  List<Perro> getOjosAzulez(){
+    public  List<Perro> getOjosAzul(){
 
         List<Perro> LPOA = new ArrayList<>();
 
         for (Perro p : ListaPerros){
-            if ( p.getOjoDerecho().getColor().equals("Azul") || p.getOjoIzquierdo().getColor().equals("Azul")){
+            if (p.getOjoDerecho().getColor().equals("Azul") || p.getOjoIzquierdo().getColor().equals("Azul")){
                 LPOA.add(p);
             }
         }
@@ -50,7 +50,7 @@ public class Coral {
         List<Perro> LPVA = new ArrayList<>();
 
         for (Perro p : ListaPerros){
-            if ( p.getLadrido().getVolumen().equals("Alto") ){
+            if (p.getLadrido().getVolumen().equals("Alto") ){
                 LPVA.add(p);
             }
         }
