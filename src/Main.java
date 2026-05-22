@@ -3,8 +3,13 @@ public class Main {
 
        Coral coral = new Coral();
        int n = 0;
+
+
+
+
+
        Perro perrito;
-       perrito = new Perro("Chuchin","Chihuahua",8,new Rabo("Negro","Largo"),new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"));
+       perrito = new Perro("Chuchin","Chihuahua",8,new Rabo("Negro","Largo"),new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Ladrido("Alto"));
         coral.AgregarPerro(perrito);
 
         Perro perro = new Perro("Juan","Chihuahua",8,new Rabo("Negro","Largo"),new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"));
@@ -19,6 +24,9 @@ public class Main {
         Perro perro5 = new Perro("Anthony","Bull terri",10,new Rabo("Blanco","Corto"),new Ojo("azul","Grandes"),new Ojo("Blanco","NO tiene"));
         coral.AgregarPerro(perro5);
 
+
+
+
         System.out.println("Perros en el coral: "+ coral.ListaPerros.size()+"\n");
         for (Perro p : coral.ListaPerros) {
             n++;
@@ -27,5 +35,23 @@ public class Main {
         }
 
         System.out.println("El perro mas viejo es: \n"+coral.PerroMayor());
+
+        System.out.println("Los perros llamados Firulais son:");
+        for (Perro p : coral.getFurulais()) {
+            System.out.println("\n");
+            System.out.println(p);
+        }
+
+        System.out.println("Los perros con ojos azules son:");
+        for (Perro p : coral.getOjosAzulez()) {
+            System.out.println("\n");
+            System.out.println(p);
+        }
+
+        System.out.println("Los perros con el voluen alto son:");
+        for (Perro p : coral.getVoluenAlto()) {
+            System.out.println("\n");
+            System.out.println(p);
+        }
     }
 }

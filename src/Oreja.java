@@ -17,5 +17,8 @@ public class Oreja {
         this.tipo = tipo;
     }
 
-
+    public Oreja(String color, String tipo) {
+        this.color = color;
+        this.tipo = tipo;
+    }
 }

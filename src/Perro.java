@@ -9,9 +9,26 @@ public class Perro {
     private Oreja orejaDerecha;
     private Oreja orejaIzquierda;
 
-    public Ladrido ladrar(){
-        Ladrido ladrido = new Ladrido("Guau Guau");
-        return ladrido;
+    private Ladrido Ladrido;
+
+    public Perro(String nombre, String raza, int edad, Rabo rabo, Ojo ojoIzquierdo, Ojo ojoDerecho, Oreja orejaDerecha, Oreja orejaIzquierda, Ladrido ladrido) {
+        Nombre = nombre;
+        this.raza = raza;
+        this.edad = edad;
+        Rabo = rabo;
+        this.ojoIzquierdo = ojoIzquierdo;
+        this.ojoDerecho = ojoDerecho;
+        this.orejaDerecha = orejaDerecha;
+        this.orejaIzquierda = orejaIzquierda;
+        Ladrido = ladrido;
+    }
+
+    public Ladrido getLadrido() {
+        return Ladrido;
+    }
+
+    public void setLadrido(Ladrido ladrido) {
+        Ladrido = ladrido;
     }
 
     public Pipi HacerPipi(){
