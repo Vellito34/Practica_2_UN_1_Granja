@@ -22,11 +22,11 @@ public class Coral {
         return PerroM;
     }
 
-    public List<Perro> getFurulais(){
+    public List<Perro> getNombre(String NomBuscar){
 
         List<Perro> LPF = new ArrayList<>();
         for (Perro p : ListaPerros){
-            if ( p.getNombre().equals("Firulais")){
+            if ( p.getNombre().equals(NomBuscar)){
                 LPF.add(p);
             }
         }

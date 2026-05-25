@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class Main {
+
+
+
     public static void main(String[] args){
 
        Coral coral = new Coral();
@@ -13,7 +16,7 @@ public class Main {
         String color;
         int edad,opc = 0;
         Perro Perronuevo = null;
-
+        String NomBuscar;
 
 
      Perro perrito;
@@ -32,175 +35,188 @@ public class Main {
      Perro perro5 = new Perro("Anthony","Bull terri",10,new Rabo("Blanco","Corto"),new Ojo("Azul","Grandes"),new Ojo("Blanco","NO tiene"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Ladrido("Alto"));
      coral.AgregarPerro(perro5);
 
+     boolean repetir = true;
+
+     while (repetir == true) {
+
+      System.out.println("Elije que deseas realizar:");
+      System.out.println("1---Agregar perro");
+      System.out.println("2--Lista de perros");
+      System.out.println("3--Tamano de la lista");
+      System.out.println("4--Perro mayor");
+      System.out.println("5--Lista de perros llamados firulais");
+      System.out.println("6--Lista de perros con los ojos azules");
+      System.out.println("7--Lista de perros con Ladrido alto");
+      System.out.println("8--Busqueda de perros repetidos");
+      System.out.println("100-Salir");
 
 
-     System.out.println("Elije que deseas realizar:");
-     System.out.println("1---Agregar perro");
-     System.out.println("2--Lista de perros");
-     System.out.println("3--Tamano de la lista");
-     System.out.println("4--Perro mayor");
-     System.out.println("5--Lista de perros llamados firulais");
-     System.out.println("6--Lista de perros con los ojos azules");
-     System.out.println("7--Lista de perros con Ladrido alto");
-     System.out.println("8--Busqueda de perros repetidos");
+      opc = sc.nextInt();
 
 
-     opc = sc.nextInt();
+      switch (opc) {
+
+       case 1:
+        System.out.println("Escribe el nombre del perro");
+        Nombre = sc.next();
 
 
-        switch (opc) {
+        System.out.println("Escribe la raza del perro");
 
-         case 1 :
+        raza = sc.next();
 
-          System.out.println("Escribe el nombre del perro");
-         Nombre = sc.next();
-          sc.next();
+        System.out.println("Ingresa la edad");
+        edad = sc.nextInt();
 
-         System.out.println("Escribe la raza del perro");
+        System.out.println("Ingresa el color del perro");
+        sc.next();
+        color = sc.nextLine();
 
-         raza = sc.nextLine();
+        System.out.println("Ingresa el tamano de rabo:");
+        Rtipo = sc.nextLine();
 
-         System.out.println("Ingresa la edad");
-         edad = sc.nextInt();
+        System.out.println("Ingresa el color del ojo derecho");
+        DeOjoColor = sc.nextLine();
 
-         System.out.println("Ingresa el color del perro");
-         sc.next();
-         color = sc.nextLine();
+        System.out.println("Ingresa el color del ojo derecho");
+        IzqOjoColor = sc.nextLine();
 
-         System.out.println("Ingresa el tamano de rabo:");
-         Rtipo = sc.nextLine();
+        System.out.println("Ingresa el tipo del ojo derecho");
+        DeOjoTipo = sc.nextLine();
 
-         System.out.println("Ingresa el color del ojo derecho");
-         DeOjoColor = sc.nextLine();
+        System.out.println("Ingresa el tipo del ojo izquierdo");
+        IzqOjoTipo = sc.nextLine();
 
-         System.out.println("Ingresa el color del ojo derecho");
-         IzqOjoColor = sc.nextLine();
+        System.out.println("Ingresa el tipo de la oreja derecha");
+        DeOrejaTipo = sc.nextLine();
 
-         System.out.println("Ingresa el tipo del ojo derecho");
-         DeOjoTipo = sc.nextLine();
+        System.out.println("Ingresa el tipo del Oreja izquierda");
+        IzqOrejaTipo = sc.nextLine();
 
-         System.out.println("Ingresa el tipo del ojo izquierdo");
-         IzqOjoTipo = sc.nextLine();
+        System.out.println("Ingresa el volumen del ladrido");
+        LadridoVolumen = sc.nextLine();
 
-         System.out.println("Ingresa el tipo de la oreja derecha");
-         DeOrejaTipo = sc.nextLine();
+        Perronuevo = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
+        coral.AgregarPerro(Perronuevo);
 
-         System.out.println("Ingresa el tipo del Oreja izquierda");
-         IzqOrejaTipo = sc.nextLine();
+        break;
 
-         System.out.println("Ingresa el volumen del ladrido");
-         LadridoVolumen = sc.nextLine();
+       case 2:
+        for (Perro p : coral.ListaPerros) {
+         n++;
+         System.out.println("Perro " + n);
+         System.out.println(p);
+        }
+        break;
 
-         Perronuevo = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
-         coral.AgregarPerro(Perronuevo);
-         break;
+       case 3:
+        System.out.println("Perros en el coral: " + coral.ListaPerros.size() + "\n");
+        break;
 
-         case 2:
-          for (Perro p : coral.ListaPerros) {
-           n++;
-           System.out.println("Perro "+n);
-           System.out.println(p);
-          }
-          break;
+       case 4:
+        System.out.println("El perro mas viejo es: \n" + coral.PerroMayor());
+        break;
 
-         case 3:
-          System.out.println("Perros en el coral: "+ coral.ListaPerros.size()+"\n");
-          break;
+       case 5:
+        System.out.println("Ingresa el nombre del perro a buscar:");
+        NomBuscar = sc.next();
+        System.out.println("Los perros llamados "+NomBuscar+" son:");
+        for (Perro p : coral.getNombre(NomBuscar)) {
 
-         case 4:
-          System.out.println("El perro mas viejo es: \n"+coral.PerroMayor());
-          break;
+         System.out.println(p);
+        }
+        break;
 
-         case 5:
-          System.out.println("Los perros llamados Firulais son:");
-          for (Perro p : coral.getFurulais()) {
+       case 6:
+        System.out.println("Los perros con ojos azules son:");
+        if (coral.getOjosAzul().size() != 0) {
+         for (Perro p : coral.getOjosAzul()) {
 
-           System.out.println(p);
-          }
-          break;
+          System.out.println(p);
+         }
+        } else {
+         System.out.println("No ahi");
+        }
+        break;
 
-         case 6:
-          System.out.println("Los perros con ojos azules son:");
-          if (coral.getOjosAzul().size() != 0){
-           for (Perro p : coral.getOjosAzul()) {
+       case 7:
+        System.out.println("Los perros con el volumen alto son:");
+        if (coral.getVoluenAlto().size() != 0) {
+         for (Perro p : coral.getVoluenAlto()) {
+          System.out.println(p);
+         }
+        } else {
+         System.out.println("No ahi");
+        }
+        break;
 
-            System.out.println(p);
-           } } else {
-           System.out.println("No ahi");
-          }
-          break;
+       case 8:
 
-         case 7:
-          System.out.println("Los perros con el volumen alto son:");
-          if (coral.getVoluenAlto().size() != 0){
-           for (Perro p : coral.getVoluenAlto()) {
-            System.out.println(p);
-           }} else {
-           System.out.println("No ahi");
-          }
-          break;
+        System.out.println("Ingresa los datos del perro a buscar");
 
-         case 8 :
+        System.out.println("Escribe el nombre del perro");
+        Nombre = sc.next();
 
-          System.out.println("Ingresa los datos del perro a buscar");
-          System.out.println("Escribe el nombre del perro");
-          Nombre = sc.next();
-          sc.next();
 
-          System.out.println("Escribe la raza del perro");
+        System.out.println("Escribe la raza del perro");
 
-          raza = sc.nextLine();
+        raza = sc.next();
 
-          System.out.println("Ingresa la edad");
-          edad = sc.nextInt();
+        System.out.println("Ingresa la edad");
+        edad = sc.nextInt();
 
-          System.out.println("Ingresa el color del perro");
-          sc.next();
-          color = sc.nextLine();
+        System.out.println("Ingresa el color del perro");
+        sc.next();
+        color = sc.nextLine();
 
-          System.out.println("Ingresa el tamano de rabo:");
-          Rtipo = sc.nextLine();
+        System.out.println("Ingresa el tamano de rabo:");
+        Rtipo = sc.nextLine();
 
-          System.out.println("Ingresa el color del ojo derecho");
-          DeOjoColor = sc.nextLine();
+        System.out.println("Ingresa el color del ojo derecho");
+        DeOjoColor = sc.nextLine();
 
-          System.out.println("Ingresa el color del ojo derecho");
-          IzqOjoColor = sc.nextLine();
+        System.out.println("Ingresa el color del ojo derecho");
+        IzqOjoColor = sc.nextLine();
 
-          System.out.println("Ingresa el tipo del ojo derecho");
-          DeOjoTipo = sc.nextLine();
+        System.out.println("Ingresa el tipo del ojo derecho");
+        DeOjoTipo = sc.nextLine();
 
-          System.out.println("Ingresa el tipo del ojo izquierdo");
-          IzqOjoTipo = sc.nextLine();
+        System.out.println("Ingresa el tipo del ojo izquierdo");
+        IzqOjoTipo = sc.nextLine();
 
-          System.out.println("Ingresa el tipo de la oreja derecha");
-          DeOrejaTipo = sc.nextLine();
+        System.out.println("Ingresa el tipo de la oreja derecha");
+        DeOrejaTipo = sc.nextLine();
 
-          System.out.println("Ingresa el tipo del Oreja izquierda");
-          IzqOrejaTipo = sc.nextLine();
+        System.out.println("Ingresa el tipo del Oreja izquierda");
+        IzqOrejaTipo = sc.nextLine();
 
-          System.out.println("Ingresa el volumen del ladrido");
-          LadridoVolumen = sc.nextLine();
+        System.out.println("Ingresa el volumen del ladrido");
+        LadridoVolumen = sc.nextLine();
 
-          Perro perrob = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
-          ;
+        Perro perrob = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
+        ;
 
-          System.out.println(coral.getPerroB(perrob));
 
-          break;
+        System.out.println("Hay "+coral.getPerroB(perrob).size());
 
-         default:
-          break;
+        for (Perro p : coral.getPerroB(perrob)) {
+         System.out.println(p);
         }
 
 
+        break;
+
+
+       case 100:
+        System.out.println("Adios");
+        repetir = false;
+       default:
+        break;
+      }
 
 
 
-        if(perro.equals(Perronuevo)){
-         System.out.println("Son iguales" );
-        }
-
+     }
 
 
         //Busqueda de un perro con una instancia hacer busquda por odjeto
