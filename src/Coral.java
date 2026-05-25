@@ -56,4 +56,17 @@ public class Coral {
         }
         return LPVA;
     }
+
+    public List<Perro> getPerroB(Perro perrob){
+
+        List<Perro> LPB = new ArrayList<>();
+
+        for (Perro p : ListaPerros){
+            if (p.equals(perrob)){
+                LPB.add(p);
+            }
+        }
+        return LPB;
+    }
+
 }

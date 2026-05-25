@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Perro {
     private String Nombre;
     private String raza;
@@ -10,6 +12,18 @@ public class Perro {
     private Oreja orejaIzquierda;
 
     private Ladrido Ladrido;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Perro perro = (Perro) o;
+        return edad == perro.edad && Objects.equals(Nombre, perro.Nombre) && Objects.equals(raza, perro.raza);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Nombre, raza, edad);
+    }
 
     public Perro(String nombre, String raza, int edad, Rabo rabo, Ojo ojoIzquierdo, Ojo ojoDerecho, Oreja orejaDerecha, Oreja orejaIzquierda, Ladrido ladrido) {
         Nombre = nombre;
