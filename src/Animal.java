@@ -6,6 +6,11 @@ public class Animal {
     private Oreja orejaDerecha;
     private Oreja orejaIzquierda;
 
+    //Composicion es cuando un odjeto se relaciona con otro odjeto cuando el odjeto a depende del odjeto b
+    //Agregacion cuando un odjeto tiene a otro odjeto tiene a otro pero no es obligatorio/ no dependen
+    //Asociacion es cuando un odjeto utiliza a otro odjeto
+    //Herencia cuando hereda xd
+
 
 
     public String getRaza() {

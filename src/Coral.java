@@ -33,24 +33,24 @@ public class Coral {
         return LPF;
     }
 
-    public  List<Perro> getOjosAzul(){
+    public  List<Perro> getOjosColor(String ColorOjo){
 
-        List<Perro> LPOA = new ArrayList<>();
+        List<Perro> LPO = new ArrayList<>();
 
         for (Perro p : ListaPerros){
-            if (p.getOjoDerecho().getColor().equals("Azul") || p.getOjoIzquierdo().getColor().equals("Azul")){
-                LPOA.add(p);
+            if (p.getOjoDerecho().getColor().equals(ColorOjo) || p.getOjoIzquierdo().getColor().equals(ColorOjo)){
+                LPO.add(p);
             }
         }
-        return LPOA;
+        return LPO;
     }
 
-    public List<Perro> getVoluenAlto(){
+    public List<Perro> getVolumen(String Volumen){
 
         List<Perro> LPVA = new ArrayList<>();
 
         for (Perro p : ListaPerros){
-            if (p.getLadrido().getVolumen().equals("Alto") ){
+            if (p.getLadrido().getVolumen().equals(Volumen) ){
                 LPVA.add(p);
             }
         }
