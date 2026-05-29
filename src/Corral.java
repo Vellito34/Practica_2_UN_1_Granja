@@ -76,4 +76,50 @@ public class Corral {
     public Integer getNumeroGatos(){
         return ListaGatos.size();
     }
+
+    public Gato GatoMayor(){
+
+        Gato GatoM = ListaGatos.get(0); //get.(0) osea posicion 0
+        for (Gato g : this.ListaGatos){
+            if (g.getEdad() > GatoM.getEdad() ){
+                GatoM = g;
+            }
+        }
+        return GatoM;
+    }
+
+    public List<Gato> getNombreGato(String NomBuscar){
+
+        List<Gato> LPF = new ArrayList<>();
+        for (Gato g : ListaGatos    ){
+            if ( g.getNombre().equals(NomBuscar)){
+                LPF.add(g);
+            }
+        }
+        return LPF;
+    }
+
+    public  List<Gato> getOjosColorGato(String ColorOjo){
+
+        List<Gato> LPO = new ArrayList<>();
+
+        for (Gato g : ListaGatos){
+            if (g.getOjoDerecho().getColor().equals(ColorOjo) || g.getOjoIzquierdo().getColor().equals(ColorOjo)){
+                LPO.add(g);
+            }
+        }
+        return LPO;
+    }
+
+    public List<Gato> getGatoB(Gato gatob){
+
+        List<Gato> LPB = new ArrayList<>();
+
+        for (Gato g : ListaGatos){
+            if (g.equals(gatob)){
+                LPB.add(g);
+            }
+        }
+        return LPB;
+    }
 }

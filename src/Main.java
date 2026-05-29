@@ -4,11 +4,23 @@ public class Main {
 
  public static void OpcionesAnimal(int opc){
   opc = 0;
-  System.out.println("Que animal deseas agregar:");
+  System.out.println("Que animal deseas usar:");
   System.out.println("1--Perro");
   System.out.println("2--Gato");
+  System.out.println("0--Salir");
 
+ }
 
+ public static void Opc(String Animal){
+  System.out.println("Elije que deseas realizar:");
+  System.out.println("1--Agregar "+Animal);
+  System.out.println("2--Lista de "+Animal);
+  System.out.println("3--Tamano de la lista");
+  System.out.println("4--"+Animal+" mayor");
+  System.out.println("5--Buscar "+Animal+" por nombre");
+  System.out.println("6--Buscar "+Animal+" por color de ojo");
+  System.out.println("7--Busqueda de "+Animal+" repetidos");
+  System.out.println("0--Salir");
  }
 
 
@@ -24,7 +36,7 @@ public class Main {
         String color;
         int edad,opc = 0;
         Perro Perronuevo = null;
-        String NomBuscar,animal;
+        String NomBuscar, Animal;
 
 
     /* Perro perrito;
@@ -49,44 +61,32 @@ public class Main {
      corral.AgregarPerro(perro);
 
      do {
-      System.out.println("Elije el Animal del corral:");
-      System.out.println("1---Perro");
-      System.out.println("2---Gato");
 
-      System.out.println("Elije que deseas realizar:");
-      System.out.println("1--Agregar Animal");
-      System.out.println("2--Lista de perros");
-      System.out.println("3--Tamano de la lista");
-      System.out.println("4--Perro mayor");
-      System.out.println("5--Buscar perros por nombre");
-      System.out.println("6--Buscar perro por color de ojo");
-      System.out.println("7--Lista de perros con Ladrido alto");
-      System.out.println("8--Busqueda de perros repetidos");
-      System.out.println("0--Salir");
-
+      OpcionesAnimal(opc);
 
       try {
+
        opc = sc.nextInt();
        sc.nextLine();
 
        switch (opc) {
-
         case 1:
-         OpcionesAnimal(opc);
+         Animal = "Perro";
+         Opc(Animal);
          opc = sc.nextInt();
+           while (repetir = true) {
+            switch (opc) {
+             case 1:
+              Animal = "perro";
+              System.out.println("Escribe el nombre del " + Animal);
+              Nombre = sc.next();
 
-         switch (opc) {
-          case 1:
-           animal = "perro";
-           System.out.println("Escribe el nombre del "+animal);
-           Nombre = sc.next();
+              System.out.println("Escribe la raza del " + Animal);
 
-           System.out.println("Escribe la raza del "+animal);
+              raza = sc.next();
 
-           raza = sc.next();
-
-           System.out.println("Ingresa la edad");
-           edad = sc.nextInt();
+              System.out.println("Ingresa la edad");
+              edad = sc.nextInt();
 /*
          System.out.println("Ingresa el color del perro");
          sc.next();
@@ -113,106 +113,89 @@ public class Main {
          System.out.println("Ingresa el tipo del Oreja izquierda");
          IzqOrejaTipo = sc.nextLine();
 */
-           System.out.println("Ingresa el volumen del ladrido");
-           LadridoVolumen = sc.nextLine();
+              System.out.println("Ingresa el volumen del ladrido");
+              LadridoVolumen = sc.nextLine();
 
 
+              //       Perro nuevo = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
 
-           //       Perro nuevo = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
+              Perro Pnuevo = new Perro(Nombre, raza, edad, new Ladrido(LadridoVolumen));
+              corral.AgregarPerro(Pnuevo);
 
-           Perro Pnuevo = new Perro(Nombre, raza, edad, new Ladrido(LadridoVolumen));
-           corral.AgregarPerro(Pnuevo);
+              break;
 
-           break;
-          case 2:
-           animal = "Gato";
-           System.out.println("Escribe el nombre del "+animal);
-           Nombre = sc.next();
+             case 2:
 
-           System.out.println("Escribe la raza del "+animal);
-           raza = sc.next();
+              for (Perro p : corral.ListaPerros) {
+               n++;
+               System.out.println("Perro " + n);
+               System.out.println(p);
+              }
+              break;
 
-           System.out.println("Ingresa la edad");
-           edad = sc.nextInt();
+             case 3:
+              System.out.println("Perros en el corral: " + corral.ListaPerros.size() + "\n");
+              break;
 
-           System.out.println("Volumen del maullido:");
-           String maullido = sc.next();
-           Gato Gnuevo = new Gato(Nombre,raza,edad,maullido );
-           break;
-         }
-          break;
-        case 2:
+             case 4:
+              System.out.println("El perro mas viejo es: \n" + corral.PerroMayor());
+              break;
 
-         for (Perro p : corral.ListaPerros) {
-          n++;
-          System.out.println("Perro " + n);
-          System.out.println(p);
-         }
-         break;
+             case 5:
+              System.out.println("Ingresa el nombre del perro a buscar:");
+              NomBuscar = sc.next();
+              System.out.println("Los perros llamados " + NomBuscar + " son:");
+              for (Perro p : corral.getNombre(NomBuscar)) {
 
-        case 3:
-         System.out.println("Perros en el corral: " + corral.ListaPerros.size() + "\n");
-         break;
+               System.out.println(p);
+              }
+              break;
 
-        case 4:
-         System.out.println("El perro mas viejo es: \n" + corral.PerroMayor());
-         break;
+             case 6:
+              System.out.println("Ingresa el color del ojo del perro buscado");
 
-        case 5:
-         System.out.println("Ingresa el nombre del perro a buscar:");
-         NomBuscar = sc.next();
-         System.out.println("Los perros llamados "+NomBuscar+" son:");
-         for (Perro p : corral.getNombre(NomBuscar)) {
+              String ColorOjo = sc.next();
 
-          System.out.println(p);
-         }
-         break;
+              System.out.println("Los perros con ojos " + ColorOjo + " son:");
+              if (corral.getOjosColor(ColorOjo).size() != 0) {
+               for (Perro p : corral.getOjosColor(ColorOjo)) {
 
-        case 6:
-         System.out.println("Ingresa el color del ojo del perro buscado");
+                System.out.println(p);
+               }
+              } else {
+               System.out.println("No hay");
+              }
+              break;
 
-         String ColorOjo = sc.next();
+             case 8:
+              System.out.println("Ingresa el Volumen del ladrido del perro buscado");
 
-         System.out.println("Los perros con ojos "+ColorOjo+" son:");
-         if (corral.getOjosColor(ColorOjo).size() != 0) {
-          for (Perro p : corral.getOjosColor(ColorOjo)) {
+              String Volumen = sc.next();
 
-           System.out.println(p);
-          }
-         } else {
-          System.out.println("No hay");
-         }
-         break;
+              System.out.println("Los perros con el volumen " + Volumen + " son:");
+              if (corral.getVolumen(Volumen).size() != 0) {
+               for (Perro p : corral.getVolumen(Volumen)) {
+                System.out.println(p);
+               }
+              } else {
+               System.out.println("No hay");
+              }
+              break;
 
-        case 7:
-         System.out.println("Ingresa el Volumen del ladrido del perro buscado");
+             case 7:
 
-         String Volumen = sc.next();
+              System.out.println("Ingresa los datos del perro a buscar");
 
-         System.out.println("Los perros con el volumen "+Volumen+" son:");
-         if (corral.getVolumen(Volumen).size() != 0) {
-          for (Perro p : corral.getVolumen(Volumen)) {
-           System.out.println(p);
-          }
-         } else {
-          System.out.println("No hay");
-         }
-         break;
-
-        case 8:
-
-         System.out.println("Ingresa los datos del perro a buscar");
-
-         System.out.println("Escribe el nombre del perro");
-         Nombre = sc.next();
+              System.out.println("Escribe el nombre del perro");
+              Nombre = sc.next();
 
 
-         System.out.println("Escribe la raza del perro");
+              System.out.println("Escribe la raza del perro");
 
-         raza = sc.next();
+              raza = sc.next();
 
-         System.out.println("Ingresa la edad");
-         edad = sc.nextInt();
+              System.out.println("Ingresa la edad");
+              edad = sc.nextInt();
 
 /*         System.out.println("Ingresa el color del perro");
          sc.next();
@@ -239,26 +222,137 @@ public class Main {
          System.out.println("Ingresa el tipo del Oreja izquierda");
          IzqOrejaTipo = sc.nextLine();
 */
-         System.out.println("Ingresa el volumen del ladrido");
-         LadridoVolumen = sc.nextLine();
+              System.out.println("Ingresa el volumen del ladrido");
+              LadridoVolumen = sc.nextLine();
 
- //        Perro perrob = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
-         Perro perrob = new Perro(Nombre,raza,edad,new Ladrido(LadridoVolumen));
+              //        Perro perrob = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
+              Perro perrob = new Perro(Nombre, raza, edad, new Ladrido(LadridoVolumen));
 
 
-         System.out.println("Hay "+corral.getPerroB(perrob).size());
+              System.out.println("Hay " + corral.getPerroB(perrob).size());
 
-         for (Perro p : corral.getPerroB(perrob)) {
-          System.out.println(p);
+              for (Perro p : corral.getPerroB(perrob)) {
+               System.out.println(p);
+              }
+
+
+              break;
+
+
+             case 0:
+              System.out.println("Adios");
+              repetir = false;
+             default:
+              break;
+            }
+           }
+
+           case 2:
+           Animal ="Gatos";
+           Opc(Animal);
+           opc=sc.nextInt();
+           while (repetir = true){
+            switch (opc){
+             case 1:
+
+              System.out.println("Escribe el nombre del " + Animal);
+              Nombre = sc.next();
+
+              System.out.println("Escribe la raza del " + Animal);
+              raza = sc.next();
+
+              System.out.println("Ingresa la edad");
+              edad = sc.nextInt();
+
+              System.out.println("Volumen del maullido:");
+              String maullido = sc.next();
+              Gato Gnuevo = new Gato(Nombre, raza, edad, maullido);
+              corral.AgregarGatos(Gnuevo);
+              break;
+             case  2:
+
+              for (Gato g : corral.ListaGatos) {
+               n++;
+               System.out.println(Animal+" " + n);
+               System.out.println(g);
+              }
+
+              break;
+             case  3:
+
+              System.out.println(Animal+" en el corral: " + corral.ListaGatos.size() + "\n");
+              break;
+             case 4:
+              System.out.println("El "+Animal+"mas viejo es: \n"+corral.PerroMayor());
+              break;
+             case 5:
+              System.out.println("Ingresa el nombre del "+Animal+" a buscar:");
+              NomBuscar = sc.next();
+              System.out.println("Los "+Animal+" llamados " + NomBuscar + " son:");
+              for (Gato g : corral.getNombreGato(NomBuscar)) {
+
+               System.out.println(g);
+              }
+
+              break;
+             case 6:
+              System.out.println("Ingresa el color del ojo del "+Animal+" buscado");
+
+              String ColorOjo = sc.next();
+
+              System.out.println("Los "+Animal+" con ojos " + ColorOjo + " son:");
+              if (corral.getOjosColorGato(ColorOjo).size() != 0) {
+               for (Gato g : corral.getOjosColorGato(ColorOjo)) {
+
+                System.out.println(g);
+               }
+              } else {
+               System.out.println("No hay");
+              }
+              break;
+
+             case 7:
+              System.out.println("Escribe el nombre del " + Animal);
+              Nombre = sc.next();
+
+              System.out.println("Escribe la raza del " + Animal);
+              raza = sc.next();
+
+              System.out.println("Ingresa la edad");
+              edad = sc.nextInt();
+
+              System.out.println("Volumen del maullido:");
+              String maullid = sc.next();
+              Gato GB = new Gato(Nombre, raza, edad, maullid);
+
+              System.out.println("Hay " + corral.getGatoB(GB).size());
+
+              for (Gato g : corral.getGatoB(GB)) {
+               System.out.println(g);
+              }
+
+              break;
+
+             case 8:
+              break;
+
+             case 0:
+
+              System.out.println("Adios");
+              repetir = false;
+
+              break;
+             default:
+              break;
+            }
+
+
+
          }
-
-
-         break;
-
-
         case 0:
          System.out.println("Adios");
          repetir = false;
+         break;
         default:
          break;
        }
