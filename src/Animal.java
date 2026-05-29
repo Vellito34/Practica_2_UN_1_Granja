@@ -80,6 +80,16 @@ public class Animal {
     //Herencia cuando hereda xd
 
 
+    public Animal(String nombre, String raza, int edad, Ojo ojoIzquierdo, Ojo ojoDerecho, Oreja orejaDerecha, Oreja orejaIzquierda) {
+        Nombre = nombre;
+        Raza = raza;
+        Edad = edad;
+        OjoIzquierdo = ojoIzquierdo;
+        OjoDerecho = ojoDerecho;
+        OrejaDerecha = orejaDerecha;
+        OrejaIzquierda = orejaIzquierda;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -95,9 +105,9 @@ public class Animal {
     @Override
     public String toString() {
         return "Animal\n" +
-                "Nombre='" + Nombre + '\n' +
-                ", Raza='" + Raza + '\n' +
-                ", Edad=" + Edad +
+                "Nombre:    " + Nombre + '\n' +
+                "Raza:      " + Raza + '\n' +
+                "Edad:      " + Edad +
                 '\n';
     }
 }

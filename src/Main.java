@@ -74,7 +74,7 @@ public class Main {
          Animal = "Perro";
          Opc(Animal);
          opc = sc.nextInt();
-           while (repetir = true) {
+
             switch (opc) {
              case 1:
               Animal = "perro";
@@ -242,16 +242,18 @@ public class Main {
              case 0:
               System.out.println("Adios");
               repetir = false;
+              break;
              default:
               break;
-            }
-           }
 
+           }
+           break;
            case 2:
+            opc = 0;
            Animal ="Gatos";
            Opc(Animal);
            opc=sc.nextInt();
-           while (repetir = true){
+
             switch (opc){
              case 1:
 
@@ -346,9 +348,10 @@ public class Main {
               break;
             }
 
+            break;
 
 
-         }
+
         case 0:
          System.out.println("Adios");
          repetir = false;
