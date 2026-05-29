@@ -39,26 +39,25 @@ public class Main {
         String NomBuscar, Animal;
 
 
-    /* Perro perrito;
-     perrito = new Perro("Chuchin","Chihuahua",8,new Rabo("Negro","Largo"),new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Ladrido("Alto"));
-     coral.AgregarPerro(perrito);
+     Perro perrito;
+     perrito = new Perro("Chuchin","Chihuahua",8,new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
+     corral.AgregarPerro(perrito);
 
-     Perro perro = new Perro("Firulais","Chihuahua",8,new Rabo("Negro","Largo"),new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Ladrido("Alto"));
-     coral.AgregarPerro(perro);
+     Perro perro = new Perro("Firulais","Chihuahua",8,new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
+     corral.AgregarPerro(perro);
 
-     Perro perro3 = new Perro("Negrito","Bulldog",3,new Rabo("Negro","Corto"),new Ojo("Cafe","Grandes"),new Ojo("Cafe","Grandes"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Ladrido("Alto"));
-     coral.AgregarPerro(perro3);
+     Perro perro3 = new Perro("Negrito","Bulldog",3,new Ojo("Cafe","Grandes"),new Ojo("Cafe","Grandes"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
+     corral.AgregarPerro(perro3);
 
-     Perro perro4 = new Perro("Mario","Doerman",2,new Rabo("Negro","Corto"),new Ojo("Cafe","Grandes"),new Ojo("Cafe","Grandes"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Ladrido("Alto"));
-     coral.AgregarPerro(perro4);
+     Perro perro4 = new Perro("Mario","Doerman",2,new Ojo("Cafe","Grandes"),new Ojo("Cafe","Grandes"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
+     corral.AgregarPerro(perro4);
 
-     Perro perro5 = new Perro("Anthony","Bull terri",10,new Rabo("Blanco","Corto"),new Ojo("Azul","Grandes"),new Ojo("Blanco","NO tiene"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Ladrido("Alto"));
-     coral.AgregarPerro(perro5);
-*/
+     Perro perro5 = new Perro("Anthony","Bull terri",10,new Ojo("Azul","Grandes"),new Ojo("Blanco","NO tiene"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
+     corral.AgregarPerro(perro5);
+
      boolean repetir = true;
 
-     Perro perro = new Perro("Juan","Chihuahua",4,new Ladrido("Alto"));
-     corral.AgregarPerro(perro);
+
 
      do {
 
@@ -74,7 +73,7 @@ public class Main {
          Animal = "Perro";
          Opc(Animal);
          opc = sc.nextInt();
-           while (repetir = true) {
+
             switch (opc) {
              case 1:
               Animal = "perro";
@@ -87,7 +86,7 @@ public class Main {
 
               System.out.println("Ingresa la edad");
               edad = sc.nextInt();
-/*
+
          System.out.println("Ingresa el color del perro");
          sc.next();
          color = sc.nextLine();
@@ -112,15 +111,13 @@ public class Main {
 
          System.out.println("Ingresa el tipo del Oreja izquierda");
          IzqOrejaTipo = sc.nextLine();
-*/
+
               System.out.println("Ingresa el volumen del ladrido");
               LadridoVolumen = sc.nextLine();
 
 
-              //       Perro nuevo = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
-
-              Perro Pnuevo = new Perro(Nombre, raza, edad, new Ladrido(LadridoVolumen));
-              corral.AgregarPerro(Pnuevo);
+              Perro Pnuevo = new Perro(Nombre,raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Ladrido(LadridoVolumen),new Rabo(color,Rtipo));
+              corral.AgregarAnimales(Pnuevo);
 
               break;
 
@@ -138,7 +135,7 @@ public class Main {
               break;
 
              case 4:
-              System.out.println("El perro mas viejo es: \n" + corral.PerroMayor());
+              System.out.println("El perro mas viejo es: \n" + corral.AnimalMayor(Perro.class));
               break;
 
              case 5:
@@ -197,7 +194,7 @@ public class Main {
               System.out.println("Ingresa la edad");
               edad = sc.nextInt();
 
-/*         System.out.println("Ingresa el color del perro");
+         System.out.println("Ingresa el color del "+Animal);
          sc.next();
          color = sc.nextLine();
 
@@ -221,12 +218,11 @@ public class Main {
 
          System.out.println("Ingresa el tipo del Oreja izquierda");
          IzqOrejaTipo = sc.nextLine();
-*/
+
               System.out.println("Ingresa el volumen del ladrido");
               LadridoVolumen = sc.nextLine();
 
-              //        Perro perrob = new Perro(Nombre, raza, edad, new Rabo(color, Rtipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Ojo(DeOjoColor, DeOjoTipo), new Oreja(color, DeOrejaTipo), new Oreja(color, IzqOrejaTipo), new Ladrido(LadridoVolumen));
-              Perro perrob = new Perro(Nombre, raza, edad, new Ladrido(LadridoVolumen));
+              Perro perrob = new Perro(Nombre, raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Ladrido(LadridoVolumen),new Rabo(color,Rtipo));
 
 
               System.out.println("Hay " + corral.getPerroB(perrob).size());
@@ -242,16 +238,18 @@ public class Main {
              case 0:
               System.out.println("Adios");
               repetir = false;
+              break;
              default:
               break;
-            }
-           }
 
+           }
+           break;
            case 2:
+            opc = 0;
            Animal ="Gatos";
            Opc(Animal);
            opc=sc.nextInt();
-           while (repetir = true){
+
             switch (opc){
              case 1:
 
@@ -264,9 +262,36 @@ public class Main {
               System.out.println("Ingresa la edad");
               edad = sc.nextInt();
 
+
+              System.out.println("Ingresa el color del "+Animal);
+              sc.next();
+              color = sc.nextLine();
+
+              System.out.println("Ingresa el tamano de rabo:");
+              Rtipo = sc.nextLine();
+
+              System.out.println("Ingresa el color del ojo derecho");
+              DeOjoColor = sc.nextLine();
+
+              System.out.println("Ingresa el color del ojo derecho");
+              IzqOjoColor = sc.nextLine();
+
+              System.out.println("Ingresa el tipo del ojo derecho");
+              DeOjoTipo = sc.nextLine();
+
+              System.out.println("Ingresa el tipo del ojo izquierdo");
+              IzqOjoTipo = sc.nextLine();
+
+              System.out.println("Ingresa el tipo de la oreja derecha");
+              DeOrejaTipo = sc.nextLine();
+
+              System.out.println("Ingresa el tipo del Oreja izquierda");
+              IzqOrejaTipo = sc.nextLine();
+
               System.out.println("Volumen del maullido:");
               String maullido = sc.next();
-              Gato Gnuevo = new Gato(Nombre, raza, edad, maullido);
+
+              Gato Gnuevo = new Gato(Nombre, raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Maullido(maullido),new Rabo(color,Rtipo));;
               corral.AgregarGatos(Gnuevo);
               break;
              case  2:
@@ -312,6 +337,8 @@ public class Main {
               break;
 
              case 7:
+
+
               System.out.println("Escribe el nombre del " + Animal);
               Nombre = sc.next();
 
@@ -321,9 +348,36 @@ public class Main {
               System.out.println("Ingresa la edad");
               edad = sc.nextInt();
 
+
+              System.out.println("Ingresa el color del "+Animal);
+              sc.next();
+              color = sc.nextLine();
+
+              System.out.println("Ingresa el tamano de rabo:");
+              Rtipo = sc.nextLine();
+
+              System.out.println("Ingresa el color del ojo derecho");
+              DeOjoColor = sc.nextLine();
+
+              System.out.println("Ingresa el color del ojo derecho");
+              IzqOjoColor = sc.nextLine();
+
+              System.out.println("Ingresa el tipo del ojo derecho");
+              DeOjoTipo = sc.nextLine();
+
+              System.out.println("Ingresa el tipo del ojo izquierdo");
+              IzqOjoTipo = sc.nextLine();
+
+              System.out.println("Ingresa el tipo de la oreja derecha");
+              DeOrejaTipo = sc.nextLine();
+
+              System.out.println("Ingresa el tipo del Oreja izquierda");
+              IzqOrejaTipo = sc.nextLine();
+
               System.out.println("Volumen del maullido:");
               String maullid = sc.next();
-              Gato GB = new Gato(Nombre, raza, edad, maullid);
+              Gato GB = new Gato(Nombre, raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Maullido(maullid),new Rabo(color,Rtipo));;
+
 
               System.out.println("Hay " + corral.getGatoB(GB).size());
 
@@ -334,6 +388,7 @@ public class Main {
               break;
 
              case 8:
+
               break;
 
              case 0:
@@ -346,9 +401,10 @@ public class Main {
               break;
             }
 
+            break;
 
 
-         }
+
         case 0:
          System.out.println("Adios");
          repetir = false;

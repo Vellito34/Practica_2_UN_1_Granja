@@ -8,6 +8,11 @@ public class Animal {
     private Ojo OjoDerecho;
     private Oreja OrejaDerecha;
     private Oreja OrejaIzquierda;
+    private Sonido sonido;
+    private Rabo rabo;
+
+
+
 
     public String getNombre() {
         return Nombre;
@@ -68,17 +73,55 @@ public class Animal {
     public Animal() {
     }
 
+    public Sonido getSonido() {
+        return sonido;
+    }
+
+    public void setSonido(Sonido sonido) {
+        this.sonido = sonido;
+    }
+
     public Animal(String nombre, String raza, int edad) {
         Nombre = nombre;
         Raza = raza;
         Edad = edad;
     }
 
+    public Rabo getRabo() {
+        return rabo;
+    }
+
+    public void setRabo(Rabo rabo) {
+        this.rabo = rabo;
+    }
+
+
     //Composicion es cuando un odjeto se relaciona con otro odjeto cuando el odjeto a depende del odjeto b
     //Agregacion cuando un odjeto tiene a otro odjeto tiene a otro pero no es obligatorio/ no dependen
     //Asociacion es cuando un odjeto utiliza a otro odjeto
     //Herencia cuando hereda xd
 
+
+    public Animal(String nombre, String raza, int edad, Ojo ojoIzquierdo, Ojo ojoDerecho, Oreja orejaDerecha, Oreja orejaIzquierda, Sonido sonido, Rabo rabo) {
+        Nombre = nombre;
+        Raza = raza;
+        Edad = edad;
+        OjoIzquierdo = ojoIzquierdo;
+        OjoDerecho = ojoDerecho;
+        OrejaDerecha = orejaDerecha;
+        OrejaIzquierda = orejaIzquierda;
+        this.sonido = sonido;
+        this.rabo = rabo;
+    }
+
+    public Animal(String nombre, String raza, int edad, Ojo ojoIzquierdo, Ojo ojoDerecho, Sonido sonido) {
+        Nombre = nombre;
+        Raza = raza;
+        Edad = edad;
+        OjoIzquierdo = ojoIzquierdo;
+        OjoDerecho = ojoDerecho;
+        this.sonido = sonido;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -95,9 +138,9 @@ public class Animal {
     @Override
     public String toString() {
         return "Animal\n" +
-                "Nombre='" + Nombre + '\n' +
-                ", Raza='" + Raza + '\n' +
-                ", Edad=" + Edad +
+                "Nombre:    " + Nombre + '\n' +
+                "Raza:      " + Raza + '\n' +
+                "Edad:      " + Edad +
                 '\n';
     }
 }

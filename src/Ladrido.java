@@ -1,26 +1,10 @@
-public class Ladrido {
-    String sonido;
-    String Volumen;
-
+public class Ladrido extends Sonido{
     public Ladrido(String Volumen) {
-        this.Volumen = Volumen;
+        super(Volumen);
     }
 
-    public String getVolumen() {
-        return Volumen;
-    }
-
-    public void setVolumen(String volumen) {
-        Volumen = volumen;
-    }
-
-
-
-    public String getSonido() {
-        return sonido;
-    }
-
-    public void setSonido(String sonido) {
-        this.sonido = sonido;
+    @Override
+    public String toString() {
+        return "Guau Guau";
     }
 }

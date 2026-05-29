@@ -3,67 +3,71 @@ import java.util.List;
 
 public class Corral {
 
-    public List<Perro> ListaPerros = new ArrayList<>();
-    public void AgregarPerro(Perro perro){
-        ListaPerros.add(perro);
+    public List<Animal> ListaAnimales = new ArrayList<>();
+    public void AgregarAnimales(Animal animal){
+        ListaAnimales.add(animal);
     }
     public Integer getNumeroPerros(){
-        return ListaPerros.size();
+        return ListaAnimales.size();
     }
 
-    public Perro PerroMayor(){
+    public Animal AnimalMayor(Class<?> tipo){
 
-        Perro PerroM = ListaPerros.get(0); //get.(0) osea posicion 0
-        for (Perro p : this.ListaPerros){
-            if (p.getEdad() > PerroM.getEdad() ){
-                PerroM = p;
+        Animal AnimalM = ListaAnimales.get(0); //get.(0) osea posicion 0
+        for (Animal p : this.ListaAnimales){
+            if (p.getClass() == tipo) {
+                if (p.getEdad() > AnimalM.getEdad()) {
+                    AnimalM = p;
+                }
             }
         }
-        return PerroM;
+        return AnimalM;
     }
+//Se puede hacer pero con un typiado investiga poner un generico y ese poner que
+ 
 
-    public List<Perro> getNombre(String NomBuscar){
+    public List<Animal> getNombre(String NomBuscar,String Animal){
+        List<Animal> LAF = new ArrayList<>();
+        for (Animal p : ListaAnimales){
 
-        List<Perro> LPF = new ArrayList<>();
-        for (Perro p : ListaPerros){
             if ( p.getNombre().equals(NomBuscar)){
-                LPF.add(p);
+                LAF.add(p);
             }
         }
-        return LPF;
+        return LAF;
     }
 
-    public  List<Perro> getOjosColor(String ColorOjo){
+    public  List<Animal> getOjosColor(String ColorOjo){
 
-        List<Perro> LPO = new ArrayList<>();
+        List<Animal> LAO = new ArrayList<>();
 
-        for (Perro p : ListaPerros){
+        for (Animal p : ListaAnimales){
             if (p.getOjoDerecho().getColor().equals(ColorOjo) || p.getOjoIzquierdo().getColor().equals(ColorOjo)){
-                LPO.add(p);
+                LAO.add(p);
             }
         }
-        return LPO;
+        return LAO;
     }
 
-    public List<Perro> getVolumen(String Volumen){
+    public List<Animal> getVolumen(String Volumen){
 
-        List<Perro> LPVA = new ArrayList<>();
+        List<Animal> LAVA = new ArrayList<>();
 
-        for (Perro p : ListaPerros){
-            if (p.getLadrido().getVolumen().equals(Volumen) ){
-                LPVA.add(p);
+        for (Animal p : ListaAnimales){
+            if (p.getSonido().getVolumen().equals(Volumen) ){
+                LAVA.add(p);
             }
         }
-        return LPVA;
+        return LAVA;
     }
 
     public List<Perro> getPerroB(Perro perrob){
 
         List<Perro> LPB = new ArrayList<>();
 
-        for (Perro p : ListaPerros){
-            if (p.equals(perrob)){
-                LPB.add(p);
+        for (Animal p : this.ListaAnimales){
+            if (p.equals(perrob) && p instanceof Perro){
+                LPB.add((Perro) p);
             }
         }
         return LPB;
@@ -122,4 +126,6 @@ public class Corral {
         }
         return LPB;
     }
+
+
 }
