@@ -1,22 +1,17 @@
 public class Gato extends Animal {
-    private String nombre;
-    private Rabo rabo;
+    String Maullido;
 
-
-
-    public String getNombre() {
-        return nombre;
+    public Gato(String nombre, String raza, int edad, String maullido) {
+        super(nombre, raza, edad);
+        this.Maullido = maullido;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getMaullido() {
+        return Maullido;
     }
 
-    public Rabo getRabo() {
-        return rabo;
+    public void setMaullido(String maullido) {
+        this.Maullido = maullido;
     }
 
-    public void setRabo(Rabo rabo) {
-        this.rabo = rabo;
-    }
 }

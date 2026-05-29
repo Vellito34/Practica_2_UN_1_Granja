@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Coral {
+public class Corral {
 
     public List<Perro> ListaPerros = new ArrayList<>();
     public void AgregarPerro(Perro perro){
@@ -69,4 +69,11 @@ public class Coral {
         return LPB;
     }
 
+    public List<Gato> ListaGatos = new ArrayList<>();
+    public void AgregarGatos(Gato gato){
+        ListaGatos.add(gato);
+    }
+    public Integer getNumeroGatos(){
+        return ListaGatos.size();
+    }
 }

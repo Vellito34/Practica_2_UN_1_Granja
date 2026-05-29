@@ -1,10 +1,78 @@
+import java.util.Objects;
+
 public class Animal {
-    private String raza;
-    private int edad;
-    private Ojo ojoIzquierdo;
-    private Ojo ojoDerecho;
-    private Oreja orejaDerecha;
-    private Oreja orejaIzquierda;
+    private String Nombre;
+    private String Raza;
+    private int Edad;
+    private Ojo OjoIzquierdo;
+    private Ojo OjoDerecho;
+    private Oreja OrejaDerecha;
+    private Oreja OrejaIzquierda;
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.Nombre = nombre;
+    }
+
+    public String getRaza() {
+        return Raza;
+    }
+
+    public void setRaza(String raza) {
+        this.Raza = raza;
+    }
+
+    public int getEdad() {
+        return Edad;
+    }
+
+    public void setEdad(int edad) {
+        this.Edad = edad;
+    }
+
+    public Ojo getOjoIzquierdo() {
+        return OjoIzquierdo;
+    }
+
+    public void setOjoIzquierdo(Ojo ojoIzquierdo) {
+        this.OjoIzquierdo = ojoIzquierdo;
+    }
+
+    public Ojo getOjoDerecho() {
+        return OjoDerecho;
+    }
+
+    public void setOjoDerecho(Ojo ojoDerecho) {
+        this.OjoDerecho = ojoDerecho;
+    }
+
+    public Oreja getOrejaDerecha() {
+        return OrejaDerecha;
+    }
+
+    public void setOrejaDerecha(Oreja orejaDerecha) {
+        this.OrejaDerecha = orejaDerecha;
+    }
+
+    public Oreja getOrejaIzquierda() {
+        return OrejaIzquierda;
+    }
+
+    public void setOrejaIzquierda(Oreja orejaIzquierda) {
+        this.OrejaIzquierda = orejaIzquierda;
+    }
+
+    public Animal() {
+    }
+
+    public Animal(String nombre, String raza, int edad) {
+        Nombre = nombre;
+        Raza = raza;
+        Edad = edad;
+    }
 
     //Composicion es cuando un odjeto se relaciona con otro odjeto cuando el odjeto a depende del odjeto b
     //Agregacion cuando un odjeto tiene a otro odjeto tiene a otro pero no es obligatorio/ no dependen
@@ -12,52 +80,24 @@ public class Animal {
     //Herencia cuando hereda xd
 
 
-
-    public String getRaza() {
-        return raza;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return Edad == animal.Edad && Objects.equals(Nombre, animal.Nombre) && Objects.equals(Raza, animal.Raza);
     }
 
-    public void setRaza(String raza) {
-        this.raza = raza;
+    @Override
+    public int hashCode() {
+        return Objects.hash(Nombre, Raza, Edad);
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public Ojo getOjoIzquierdo() {
-        return ojoIzquierdo;
-    }
-
-    public void setOjoIzquierdo(Ojo ojoIzquierdo) {
-        this.ojoIzquierdo = ojoIzquierdo;
-    }
-
-    public Ojo getOjoDerecho() {
-        return ojoDerecho;
-    }
-
-    public void setOjoDerecho(Ojo ojoDerecho) {
-        this.ojoDerecho = ojoDerecho;
-    }
-
-    public Oreja getOrejaDerecha() {
-        return orejaDerecha;
-    }
-
-    public void setOrejaDerecha(Oreja orejaDerecha) {
-        this.orejaDerecha = orejaDerecha;
-    }
-
-    public Oreja getOrejaIzquierda() {
-        return orejaIzquierda;
-    }
-
-    public void setOrejaIzquierda(Oreja orejaIzquierda) {
-        this.orejaIzquierda = orejaIzquierda;
+    @Override
+    public String toString() {
+        return "Animal\n" +
+                "Nombre='" + Nombre + '\n' +
+                ", Raza='" + Raza + '\n' +
+                ", Edad=" + Edad +
+                '\n';
     }
 }
