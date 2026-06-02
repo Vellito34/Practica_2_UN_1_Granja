@@ -137,7 +137,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal\n" +
+        return
                 "Nombre:    " + Nombre + '\n' +
                 "Raza:      " + Raza + '\n' +
                 "Edad:      " + Edad +

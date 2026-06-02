@@ -4,128 +4,95 @@ import java.util.List;
 public class Corral {
 
     public List<Animal> ListaAnimales = new ArrayList<>();
-    public void AgregarAnimales(Animal animal){
+
+    public void AgregarAnimales(Animal animal) {
         ListaAnimales.add(animal);
     }
-    public Integer getNumeroPerros(){
+
+    public Integer getNumeroPerros() {
         return ListaAnimales.size();
     }
 
-    public Animal AnimalMayor(Class<?> tipo){
+    public <T extends Animal> T AnimalMayor(Class<T> Tipo) {
 
-        Animal AnimalM = ListaAnimales.get(0); //get.(0) osea posicion 0
-        for (Animal p : this.ListaAnimales){
-            if (p.getClass() == tipo) {
-                if (p.getEdad() > AnimalM.getEdad()) {
-                    AnimalM = p;
+        T AnimalM = null;
+
+        for (Animal p : this.ListaAnimales) {
+            if (p.getClass() == Tipo) {
+                if (AnimalM == null || p.getEdad() > AnimalM.getEdad()) {
+                    AnimalM = Tipo.cast(p);
                 }
             }
         }
         return AnimalM;
     }
 //Se puede hacer pero con un typiado investiga poner un generico y ese poner que
- 
 
-    public List<Animal> getNombre(String NomBuscar,String Animal){
-        List<Animal> LAF = new ArrayList<>();
-        for (Animal p : ListaAnimales){
 
-            if ( p.getNombre().equals(NomBuscar)){
-                LAF.add(p);
+    public <T extends Animal> List<T> getNombre(String NomBuscar, Class<T> Tipo) {
+        List<T> LAN = new ArrayList<>();
+        for (Animal p : ListaAnimales) {
+
+            if (p.getClass() == Tipo){
+                if (p.getNombre().equals(NomBuscar)) {
+                    LAN.add(Tipo.cast(p));
+                }
             }
         }
-        return LAF;
+        return LAN;
     }
 
-    public  List<Animal> getOjosColor(String ColorOjo){
+    public <T extends Animal> List<T> getOjosColor(String ColorOjo,Class<T> Tipo) {
 
-        List<Animal> LAO = new ArrayList<>();
+        List<T> LAO = new ArrayList<>();
 
-        for (Animal p : ListaAnimales){
-            if (p.getOjoDerecho().getColor().equals(ColorOjo) || p.getOjoIzquierdo().getColor().equals(ColorOjo)){
-                LAO.add(p);
+        for (Animal p : ListaAnimales) {
+            if (p.getClass() == Tipo){
+                if (p.getOjoDerecho().getColor().equals(ColorOjo) || p.getOjoIzquierdo().getColor().equals(ColorOjo)) {
+                    LAO.add(Tipo.cast(p));
+                }
             }
         }
         return LAO;
     }
 
-    public List<Animal> getVolumen(String Volumen){
+    public <T extends Animal> List<T> getVolumen(String Volumen,Class<T> Tipo) {
 
-        List<Animal> LAVA = new ArrayList<>();
+        List<T> LAV = new ArrayList<>();
 
-        for (Animal p : ListaAnimales){
-            if (p.getSonido().getVolumen().equals(Volumen) ){
-                LAVA.add(p);
+        for (Animal p : ListaAnimales) {
+            if (p.getClass() == Tipo) {
+                if (p.getSonido().getVolumen().equals(Volumen)) {
+                    LAV.add(Tipo.cast(p));
+                }
             }
         }
-        return LAVA;
+        return LAV;
     }
 
-    public List<Perro> getPerroB(Perro perrob){
+    public <T extends Animal> List<T> getAnimalB(T animalb,Class<T> Tipo) {
 
-        List<Perro> LPB = new ArrayList<>();
+        List<T> LPB = new ArrayList<>();
 
-        for (Animal p : this.ListaAnimales){
-            if (p.equals(perrob) && p instanceof Perro){
-                LPB.add((Perro) p);
-            }
-        }
-        return LPB;
-    }
-
-    public List<Gato> ListaGatos = new ArrayList<>();
-    public void AgregarGatos(Gato gato){
-        ListaGatos.add(gato);
-    }
-    public Integer getNumeroGatos(){
-        return ListaGatos.size();
-    }
-
-    public Gato GatoMayor(){
-
-        Gato GatoM = ListaGatos.get(0); //get.(0) osea posicion 0
-        for (Gato g : this.ListaGatos){
-            if (g.getEdad() > GatoM.getEdad() ){
-                GatoM = g;
-            }
-        }
-        return GatoM;
-    }
-
-    public List<Gato> getNombreGato(String NomBuscar){
-
-        List<Gato> LPF = new ArrayList<>();
-        for (Gato g : ListaGatos    ){
-            if ( g.getNombre().equals(NomBuscar)){
-                LPF.add(g);
-            }
-        }
-        return LPF;
-    }
-
-    public  List<Gato> getOjosColorGato(String ColorOjo){
-
-        List<Gato> LPO = new ArrayList<>();
-
-        for (Gato g : ListaGatos){
-            if (g.getOjoDerecho().getColor().equals(ColorOjo) || g.getOjoIzquierdo().getColor().equals(ColorOjo)){
-                LPO.add(g);
-            }
-        }
-        return LPO;
-    }
-
-    public List<Gato> getGatoB(Gato gatob){
-
-        List<Gato> LPB = new ArrayList<>();
-
-        for (Gato g : ListaGatos){
-            if (g.equals(gatob)){
-                LPB.add(g);
+        for (Animal p : this.ListaAnimales) {
+            if (p.getClass() == Tipo) {
+                if (p.equals(animalb) ) {
+                    LPB.add(Tipo.cast(p));
+                }
             }
         }
         return LPB;
     }
 
+    public <T extends Animal> List<T> FiltrarTipo(Class<T> Tipo) {
 
+        List<T> Clases = new ArrayList<>();
+
+        for (Animal a : ListaAnimales) {
+            if (Tipo.isInstance(a)) {
+                Clases.add(Tipo.cast(a));
+            }
+        }
+        return Clases;
+    }
 }

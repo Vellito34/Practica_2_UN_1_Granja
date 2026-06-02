@@ -7,6 +7,7 @@ public class Main {
   System.out.println("Que animal deseas usar:");
   System.out.println("1--Perro");
   System.out.println("2--Gato");
+  System.out.println("3--Gallina");
   System.out.println("0--Salir");
 
  }
@@ -41,19 +42,22 @@ public class Main {
 
      Perro perrito;
      perrito = new Perro("Chuchin","Chihuahua",8,new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
-     corral.AgregarPerro(perrito);
+     corral.AgregarAnimales(perrito);
 
      Perro perro = new Perro("Firulais","Chihuahua",8,new Ojo("Cafe","Chinos"),new Ojo("Cafe","Chinos"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
-     corral.AgregarPerro(perro);
+     corral.AgregarAnimales(perro);
 
      Perro perro3 = new Perro("Negrito","Bulldog",3,new Ojo("Cafe","Grandes"),new Ojo("Cafe","Grandes"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
-     corral.AgregarPerro(perro3);
+     corral.AgregarAnimales(perro3);
 
      Perro perro4 = new Perro("Mario","Doerman",2,new Ojo("Cafe","Grandes"),new Ojo("Cafe","Grandes"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
-     corral.AgregarPerro(perro4);
+     corral.AgregarAnimales(perro4);
 
      Perro perro5 = new Perro("Anthony","Bull terri",10,new Ojo("Azul","Grandes"),new Ojo("Blanco","NO tiene"),new Oreja("Negro","Largas"),new Oreja("Negro","Largas"),new Sonido("Alto"),new Rabo("Negro","Largo"));
-     corral.AgregarPerro(perro5);
+     corral.AgregarAnimales(perro5);
+
+     Gato gato1 = new Gato("Michi", "Persa", 4, new Ojo("Verde","Grandes"), new Ojo("Verde","Grandes"), new Oreja("Blanco","Largas"), new Oreja("Blanco","Largas"), new Maullido("Bajo"), new Rabo("Blanco","Largo"));
+     corral.AgregarAnimales(gato1);
 
      boolean repetir = true;
 
@@ -78,17 +82,17 @@ public class Main {
              case 1:
               Animal = "perro";
               System.out.println("Escribe el nombre del " + Animal);
-              Nombre = sc.next();
+              Nombre = sc.nextLine();
 
               System.out.println("Escribe la raza del " + Animal);
 
-              raza = sc.next();
+              raza = sc.nextLine();
 
               System.out.println("Ingresa la edad");
               edad = sc.nextInt();
 
          System.out.println("Ingresa el color del perro");
-         sc.next();
+         sc.nextLine();
          color = sc.nextLine();
 
          System.out.println("Ingresa el tamano de rabo:");
@@ -122,8 +126,8 @@ public class Main {
               break;
 
              case 2:
-
-              for (Perro p : corral.ListaPerros) {
+              n=0;
+              for (Perro p : corral.FiltrarTipo(Perro.class)) {
                n++;
                System.out.println("Perro " + n);
                System.out.println(p);
@@ -131,7 +135,7 @@ public class Main {
               break;
 
              case 3:
-              System.out.println("Perros en el corral: " + corral.ListaPerros.size() + "\n");
+              System.out.println("Perros en el corral: " + corral.FiltrarTipo(Perro.class).size() + "\n");
               break;
 
              case 4:
@@ -142,7 +146,7 @@ public class Main {
               System.out.println("Ingresa el nombre del perro a buscar:");
               NomBuscar = sc.next();
               System.out.println("Los perros llamados " + NomBuscar + " son:");
-              for (Perro p : corral.getNombre(NomBuscar)) {
+              for (Perro p : corral.getNombre(NomBuscar,Perro.class)) {
 
                System.out.println(p);
               }
@@ -154,8 +158,8 @@ public class Main {
               String ColorOjo = sc.next();
 
               System.out.println("Los perros con ojos " + ColorOjo + " son:");
-              if (corral.getOjosColor(ColorOjo).size() != 0) {
-               for (Perro p : corral.getOjosColor(ColorOjo)) {
+              if (corral.getOjosColor(ColorOjo,Perro.class).size() != 0) {
+               for (Perro p : corral.getOjosColor(ColorOjo,Perro.class)) {
 
                 System.out.println(p);
                }
@@ -170,8 +174,8 @@ public class Main {
               String Volumen = sc.next();
 
               System.out.println("Los perros con el volumen " + Volumen + " son:");
-              if (corral.getVolumen(Volumen).size() != 0) {
-               for (Perro p : corral.getVolumen(Volumen)) {
+              if (corral.getVolumen(Volumen,Perro.class).size() != 0) {
+               for (Animal p : corral.getVolumen(Volumen,Perro.class)) {
                 System.out.println(p);
                }
               } else {
@@ -184,12 +188,12 @@ public class Main {
               System.out.println("Ingresa los datos del perro a buscar");
 
               System.out.println("Escribe el nombre del perro");
-              Nombre = sc.next();
+              Nombre = sc.nextLine();
 
 
               System.out.println("Escribe la raza del perro");
 
-              raza = sc.next();
+              raza = sc.nextLine();
 
               System.out.println("Ingresa la edad");
               edad = sc.nextInt();
@@ -222,12 +226,12 @@ public class Main {
               System.out.println("Ingresa el volumen del ladrido");
               LadridoVolumen = sc.nextLine();
 
-              Perro perrob = new Perro(Nombre, raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Ladrido(LadridoVolumen),new Rabo(color,Rtipo));
+              Perro animalb = new Perro(Nombre, raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Ladrido(LadridoVolumen),new Rabo(color,Rtipo));
 
 
-              System.out.println("Hay " + corral.getPerroB(perrob).size());
+              System.out.println("Hay " + corral.getAnimalB(animalb,Perro.class).size());
 
-              for (Perro p : corral.getPerroB(perrob)) {
+              for (Perro p : corral.getAnimalB(animalb,Perro.class)) {
                System.out.println(p);
               }
 
@@ -246,7 +250,7 @@ public class Main {
            break;
            case 2:
             opc = 0;
-           Animal ="Gatos";
+           Animal ="Gato";
            Opc(Animal);
            opc=sc.nextInt();
 
@@ -257,11 +261,11 @@ public class Main {
               Nombre = sc.next();
 
               System.out.println("Escribe la raza del " + Animal);
+
               raza = sc.next();
 
               System.out.println("Ingresa la edad");
               edad = sc.nextInt();
-
 
               System.out.println("Ingresa el color del "+Animal);
               sc.next();
@@ -288,48 +292,68 @@ public class Main {
               System.out.println("Ingresa el tipo del Oreja izquierda");
               IzqOrejaTipo = sc.nextLine();
 
-              System.out.println("Volumen del maullido:");
-              String maullido = sc.next();
+              System.out.println("Ingresa el volumen del ladrido");
+              LadridoVolumen = sc.nextLine();
 
-              Gato Gnuevo = new Gato(Nombre, raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Maullido(maullido),new Rabo(color,Rtipo));;
-              corral.AgregarGatos(Gnuevo);
+
+              Gato nuevo = new Gato(Nombre,raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Maullido(LadridoVolumen),new Rabo(color,Rtipo));
+              corral.AgregarAnimales(nuevo);
+
               break;
-             case  2:
 
-              for (Gato g : corral.ListaGatos) {
+             case 2:
+              n=0;
+
+              for (Gato p : corral.FiltrarTipo(Gato.class)) {
                n++;
-               System.out.println(Animal+" " + n);
-               System.out.println(g);
+               System.out.println(Animal + " " + n);
+               System.out.println(p);
               }
-
               break;
-             case  3:
 
-              System.out.println(Animal+" en el corral: " + corral.ListaGatos.size() + "\n");
+             case 3:
+              System.out.println(Animal +" en el corral: " + corral.FiltrarTipo(Gato.class).size() + "\n");
               break;
+
              case 4:
-              System.out.println("El "+Animal+"mas viejo es: \n"+corral.PerroMayor());
+              System.out.println("El "+Animal+" mas viejo es: \n" + corral.AnimalMayor(Gato.class));
               break;
+
              case 5:
               System.out.println("Ingresa el nombre del "+Animal+" a buscar:");
               NomBuscar = sc.next();
               System.out.println("Los "+Animal+" llamados " + NomBuscar + " son:");
-              for (Gato g : corral.getNombreGato(NomBuscar)) {
+              for (Gato p : corral.getNombre(NomBuscar,Gato.class)) {
 
-               System.out.println(g);
+               System.out.println(p);
               }
-
               break;
+
              case 6:
               System.out.println("Ingresa el color del ojo del "+Animal+" buscado");
 
               String ColorOjo = sc.next();
 
               System.out.println("Los "+Animal+" con ojos " + ColorOjo + " son:");
-              if (corral.getOjosColorGato(ColorOjo).size() != 0) {
-               for (Gato g : corral.getOjosColorGato(ColorOjo)) {
+              if (corral.getOjosColor(ColorOjo,Gato.class).size() != 0) {
+               for (Gato p : corral.getOjosColor(ColorOjo,Gato.class)) {
 
-                System.out.println(g);
+                System.out.println(p);
+               }
+              } else {
+               System.out.println("No hay");
+              }
+              break;
+
+             case 8:
+              System.out.println("Ingresa el Volumen del maullifo del Gato buscado");
+
+              String Volumen = sc.next();
+
+              System.out.println("Los "+Animal+" con el volumen " + Volumen + " son:");
+              if (corral.getVolumen(Volumen,Gato.class).size() != 0) {
+               for (Animal p : corral.getVolumen(Volumen,Gato.class)) {
+                System.out.println(p);
                }
               } else {
                System.out.println("No hay");
@@ -338,16 +362,18 @@ public class Main {
 
              case 7:
 
+              System.out.println("Ingresa los datos del gato a buscar");
 
-              System.out.println("Escribe el nombre del " + Animal);
+              System.out.println("Escribe el nombre del Gato");
               Nombre = sc.next();
 
-              System.out.println("Escribe la raza del " + Animal);
+
+              System.out.println("Escribe la raza del Gato");
+
               raza = sc.next();
 
               System.out.println("Ingresa la edad");
               edad = sc.nextInt();
-
 
               System.out.println("Ingresa el color del "+Animal);
               sc.next();
@@ -374,35 +400,158 @@ public class Main {
               System.out.println("Ingresa el tipo del Oreja izquierda");
               IzqOrejaTipo = sc.nextLine();
 
-              System.out.println("Volumen del maullido:");
-              String maullid = sc.next();
-              Gato GB = new Gato(Nombre, raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Maullido(maullid),new Rabo(color,Rtipo));;
+              System.out.println("Ingresa el volumen del maullido");
+              LadridoVolumen = sc.nextLine();
+
+              Gato animalb = new Gato(Nombre, raza, edad, new Ojo(DeOjoColor,DeOjoTipo),new Ojo(DeOjoColor,IzqOjoTipo),new Oreja(color,DeOrejaTipo),new Oreja(color,IzqOrejaTipo),new Maullido(LadridoVolumen),new Rabo(color,Rtipo));
 
 
-              System.out.println("Hay " + corral.getGatoB(GB).size());
+              System.out.println("Hay " + corral.getAnimalB(animalb,Gato.class).size());
 
-              for (Gato g : corral.getGatoB(GB)) {
-               System.out.println(g);
+              for (Gato p : corral.getAnimalB(animalb,Gato.class)) {
+               System.out.println(p);
               }
 
-              break;
-
-             case 8:
 
               break;
 
-             case 0:
-
-              System.out.println("Adios");
-              repetir = false;
-
-              break;
-             default:
-              break;
             }
 
             break;
 
+        case 3:
+         opc = 0;
+         Animal = "Gallina";
+         Opc(Animal);
+         opc = sc.nextInt();
+
+         switch (opc) {
+          case 1:
+           System.out.println("Escribe el nombre de la " + Animal);
+           Nombre = sc.next();
+
+           System.out.println("Escribe la raza de la " + Animal);
+           raza = sc.next();
+
+           System.out.println("Ingresa la edad");
+           edad = sc.nextInt();
+
+           System.out.println("Ingresa el color de la " + Animal);
+           sc.next();
+           color = sc.nextLine();
+
+           System.out.println("Ingresa el color del ojo derecho");
+           DeOjoColor = sc.nextLine();
+
+           System.out.println("Ingresa el color del ojo izquierdo");
+           IzqOjoColor = sc.nextLine();
+
+           System.out.println("Ingresa el tipo del ojo derecho");
+           DeOjoTipo = sc.nextLine();
+
+           System.out.println("Ingresa el tipo del ojo izquierdo");
+           IzqOjoTipo = sc.nextLine();
+
+
+           System.out.println("Ingresa el volumen del cacareo");
+           LadridoVolumen = sc.nextLine();
+
+           Gallina nueva = new Gallina(Nombre, raza, edad, new Ojo(DeOjoColor, DeOjoTipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Cacareo(LadridoVolumen));
+           corral.AgregarAnimales(nueva);
+           break;
+
+          case 2:
+           n=0;
+           for (Gallina p : corral.FiltrarTipo(Gallina.class)) {
+            n++;
+            System.out.println(Animal + " " + n);
+            System.out.println(p);
+           }
+           break;
+
+          case 3:
+           System.out.println(Animal + " en el corral: " + corral.FiltrarTipo(Gallina.class).size() + "\n");
+           break;
+
+          case 4:
+           System.out.println("La " + Animal + " mas vieja es: \n" + corral.AnimalMayor(Gallina.class));
+           break;
+
+          case 5:
+           System.out.println("Ingresa el nombre de la " + Animal + " a buscar:");
+           NomBuscar = sc.next();
+           System.out.println("Las " + Animal + "s llamadas " + NomBuscar + " son:");
+           for (Gallina p : corral.getNombre(NomBuscar, Gallina.class)) {
+            System.out.println(p);
+           }
+           break;
+
+          case 6:
+           System.out.println("Ingresa el color del ojo de la " + Animal + " buscada");
+           String ColorOjo = sc.next();
+           System.out.println("Las " + Animal + "s con ojos " + ColorOjo + " son:");
+           if (corral.getOjosColor(ColorOjo, Gallina.class).size() != 0) {
+            for (Gallina p : corral.getOjosColor(ColorOjo, Gallina.class)) {
+             System.out.println(p);
+            }
+           } else {
+            System.out.println("No hay");
+           }
+           break;
+
+          case 8:
+           System.out.println("Ingresa el volumen del cacareo de la " + Animal + " buscada");
+           String Volumen = sc.next();
+           System.out.println("Las " + Animal + "s con volumen " + Volumen + " son:");
+           if (corral.getVolumen(Volumen, Gallina.class).size() != 0) {
+            for (Gallina p : corral.getVolumen(Volumen, Gallina.class)) {
+             System.out.println(p);
+            }
+           } else {
+            System.out.println("No hay");
+           }
+           break;
+
+          case 7:
+           System.out.println("Ingresa los datos de la " + Animal + " a buscar");
+
+           System.out.println("Escribe el nombre de la Gallina");
+           Nombre = sc.next();
+
+           System.out.println("Escribe la raza de la Gallina");
+           raza = sc.next();
+
+           System.out.println("Ingresa la edad");
+           edad = sc.nextInt();
+
+           System.out.println("Ingresa el color de la " + Animal);
+           sc.next();
+           color = sc.nextLine();
+
+           System.out.println("Ingresa el color del ojo derecho");
+           DeOjoColor = sc.nextLine();
+
+           System.out.println("Ingresa el color del ojo izquierdo");
+           IzqOjoColor = sc.nextLine();
+
+           System.out.println("Ingresa el tipo del ojo derecho");
+           DeOjoTipo = sc.nextLine();
+
+           System.out.println("Ingresa el tipo del ojo izquierdo");
+           IzqOjoTipo = sc.nextLine();
+
+           System.out.println("Ingresa el volumen del cacareo");
+           LadridoVolumen = sc.nextLine();
+
+           Gallina gallinab = new Gallina(Nombre, raza, edad, new Ojo(DeOjoColor, DeOjoTipo), new Ojo(IzqOjoColor, IzqOjoTipo), new Cacareo(LadridoVolumen));
+
+           System.out.println("Hay " + corral.getAnimalB(gallinab, Gallina.class).size());
+           for (Gallina p : corral.getAnimalB(gallinab, Gallina.class)) {
+            System.out.println(p);
+           }
+           break;
+         }
+         break;
 
 
         case 0:
