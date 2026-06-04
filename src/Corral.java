@@ -31,7 +31,7 @@ public class Corral {
 
     public <T extends Animal> List<T> getNombre(String NomBuscar, Class<T> Tipo) {
         List<T> LAN = new ArrayList<>();
-        for (Animal p : ListaAnimales) {
+        for (Animal p : this.ListaAnimales) {
 
             if (p.getClass() == Tipo){
                 if (p.getNombre().equals(NomBuscar)) {
@@ -46,7 +46,7 @@ public class Corral {
 
         List<T> LAO = new ArrayList<>();
 
-        for (Animal p : ListaAnimales) {
+        for (Animal p : this.ListaAnimales) {
             if (p.getClass() == Tipo){
                 if (p.getOjoDerecho().getColor().equals(ColorOjo) || p.getOjoIzquierdo().getColor().equals(ColorOjo)) {
                     LAO.add(Tipo.cast(p));
@@ -60,9 +60,10 @@ public class Corral {
 
         List<T> LAV = new ArrayList<>();
 
-        for (Animal p : ListaAnimales) {
+        for (Animal p : this.ListaAnimales) {
             if (p.getClass() == Tipo) {
                 if (p.getSonido().getVolumen().equals(Volumen)) {
+
                     LAV.add(Tipo.cast(p));
                 }
             }
@@ -78,6 +79,7 @@ public class Corral {
             if (p.getClass() == Tipo) {
                 if (p.equals(animalb) ) {
                     LPB.add(Tipo.cast(p));
+
                 }
             }
         }
@@ -88,11 +90,33 @@ public class Corral {
 
         List<T> Clases = new ArrayList<>();
 
-        for (Animal a : ListaAnimales) {
+        this.ListaAnimales.forEach(a -> {
             if (Tipo.isInstance(a)) {
                 Clases.add(Tipo.cast(a));
             }
-        }
+        });
         return Clases;
     }
+    //Devolver el total de la suma de las edades de los perros,gatos y gallinas
+    public <T extends Animal> int getSumaEdades(Class<T> Tipo){
+        int total = 0;
+        for (Animal a : this.ListaAnimales){
+            if (Tipo.isInstance(a)) {
+                total += a.getEdad();
+            }
+        }
+        return total;
+    }
+    //Promedio y suma de la edad de cada animal
+    public <T extends Animal> int getPromedioEdades(Class<T> Tipo){
+        int promedio;
+        if (FiltrarTipo(Tipo).size() != 0){
+            promedio = getSumaEdades(Tipo)/FiltrarTipo(Tipo).size();
+        }else {promedio = 0;}
+
+        return promedio;
+    }
+    //
 }
+//for otra forma this.ListaAnimales.forEach
+//landa pasar funciones como parametro a otra funcion

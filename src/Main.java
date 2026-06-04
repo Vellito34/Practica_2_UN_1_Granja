@@ -21,6 +21,9 @@ public class Main {
   System.out.println("5--Buscar "+Animal+" por nombre");
   System.out.println("6--Buscar "+Animal+" por color de ojo");
   System.out.println("7--Busqueda de "+Animal+" repetidos");
+  System.out.println("8--Volumen del Sonido del "+Animal);
+  System.out.println("9--Suma de las edades");
+  System.out.println("10-Promedio de las edades");
   System.out.println("0--Salir");
  }
 
@@ -238,7 +241,15 @@ public class Main {
 
               break;
 
+             case 9:
+              System.out.println("La suma de las edades es:");
+              System.out.println(corral.getSumaEdades(Perro.class));
 
+              break;
+             case 10:
+              System.out.println("El promedio de las edades es:");
+              System.out.println(corral.getPromedioEdades(Perro.class));
+              break;
              case 0:
               System.out.println("Adios");
               repetir = false;
@@ -414,6 +425,19 @@ public class Main {
 
 
               break;
+             case 9:
+              System.out.println("La suma de las edades es:");
+              System.out.println(corral.getSumaEdades(Gato.class));
+
+              break;
+             case 10:
+              System.out.println("El promedio de las edades es:");
+              System.out.println(corral.getPromedioEdades(Gato.class));
+              break;
+             case 0:
+              System.out.println("Adios");
+              repetir = false;
+              break;
 
             }
 
@@ -550,6 +574,21 @@ public class Main {
             System.out.println(p);
            }
            break;
+
+          case 9:
+           System.out.println("La suma de las edades es:");
+           System.out.println(corral.getSumaEdades(Gallina.class));
+
+           break;
+          case 10:
+           System.out.println("El promedio de las edades es:");
+           System.out.println(corral.getPromedioEdades(Gallina.class));
+           break;
+
+          case 0:
+           System.out.println("Adios");
+           repetir = false;
+           break;
          }
          break;
 
@@ -559,6 +598,9 @@ public class Main {
          repetir = false;
          break;
         default:
+         corral.FiltrarTipo(Perro.class).forEach(a ->{
+          System.out.println(a);
+         });
          break;
        }
       } catch (Exception e) {
