@@ -98,8 +98,8 @@ public class Corral {
         return Clases;
     }
     //Devolver el total de la suma de las edades de los perros,gatos y gallinas
-    public <T extends Animal> int getSumaEdades(Class<T> Tipo){
-        int total = 0;
+    public <T extends Animal> Integer getSumaEdades(Class<T> Tipo){
+        Integer total = 0;
         for (Animal a : this.ListaAnimales){
             if (Tipo.isInstance(a)) {
                 total += a.getEdad();
@@ -108,8 +108,8 @@ public class Corral {
         return total;
     }
     //Promedio y suma de la edad de cada animal
-    public <T extends Animal> int getPromedioEdades(Class<T> Tipo){
-        int promedio;
+    public <T extends Animal> Integer getPromedioEdades(Class<T> Tipo){
+        Integer promedio;
         if (FiltrarTipo(Tipo).size() != 0){
             promedio = getSumaEdades(Tipo)/FiltrarTipo(Tipo).size();
         }else {promedio = 0;}
